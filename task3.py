@@ -4,10 +4,11 @@ grammar = nltk.CFG.fromstring("""
     S -> NP VP
     NP -> NN | DT NN
     VP -> V | V NP 
- 
 """)
 
-tokens = nltk.word_tokenize("My father owns a car")
+sentence = input("Supply the sentence to check: ")
+
+tokens = nltk.word_tokenize(sentence)
 
 tagged = nltk.pos_tag((tokens))
 
@@ -29,12 +30,9 @@ for d in deters:
     production_rules.append(nltk.Production(nltk.Nonterminal('DT'), [d]))
 
 
-
-
-
-
 updated_grammar = nltk.CFG(grammar.start(), grammar.productions() + production_rules)
 
+# print(updated_grammar)
 
 parser = nltk.ChartParser(updated_grammar)
 
@@ -47,9 +45,9 @@ for tree in parser.parse(tokens):
 
 
 if is_accepted :
-    print("Sentence is accepted by grammar")
+    print("The Supply Sentence is grammatically Correcet")
 else:
-    print("Sentence Not accepted")
+    print("The Supplied Sentence is NOT grammatically correct")
 
 
 

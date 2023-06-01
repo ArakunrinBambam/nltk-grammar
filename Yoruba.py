@@ -4,32 +4,16 @@ grammar = nltk.CFG.fromstring("""
     S -> NP VP
     NP -> N | N DT 
     VP -> V | V NP 
-    N -> 'baba' | 'iya' | 'egbon' | 'ana' | 'ile' | 'eniyan' | 'ebi' | 'Sola' | 'Julius' | 'oko' | 'wa' | 'kan'
+    N -> 'baba' | 'iya' | 'egbon' | 'ana' | 'ile' | 'eniyan' | 'ebi' | 'Sola' | 'Julius' | 'oko' | 'kan' | 'mo' | 'moto' | 'awon'| 'obi' | 'Bola'
     V -> 'jade' | 'ni' | 'lo' | 'je' | 'ti' | 'to' 
-    DT -> 'mi' |  'ti' | 
+    DT -> 'mi' |  'ti' | 're' | 'wa'
 
  
 """)
 
-tokens = nltk.word_tokenize("iya wa jade")
+string_in = input("Supply the Yoruba Sentence to check: ")
 
-# tagged = nltk.pos_tag(tokens)
-
-
-# nouns = [word for (word, pos) in tagged if pos.startswith('N') or pos.startswith('PRP')]
-# verbs = [word for (word, pos) in tagged if pos.startswith('V') or pos.startswith('TO')]
-# deters = [word for (word, pos) in tagged if pos.startswith('DT') or pos.startswith('IN')]
-
-
-# production_rules = []
-
-# for n in nouns:
-#     production_rules.append(nltk.Production(nltk.Nonterminal('NN'), [n]))
-# for v in verbs:
-#     production_rules.append(nltk.Production(nltk.Nonterminal('V'), [v]))
-# for d in deters:
-#     production_rules.append(nltk.Production(nltk.Nonterminal('DT'), [d]))
-
+tokens = nltk.word_tokenize(string_in)
 
 parser = nltk.ChartParser(grammar)
 
